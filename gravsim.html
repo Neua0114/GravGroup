@@ -1,97 +1,119 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Gravity Simulation</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="../common/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Extra custom CSS rules -->
-    <style>
-    .rounded-border {
-      border: 1px solid lightgray;
-      border-radius: 4px;
-      padding: 6px 6px 6px 6px
-    }
-
-    .relative {
-      width:100%; height:810px;
-      position: relative;
-    }
-
-    .absolute {
-      width:100%; height:810px;
-      position: absolute;
-    }
-    </style>
-
-  </head>
-  <body style="padding-top:15px; padding-bottom:15px;">
-    <div class="container">
-
-      <div class="page-header">
-          <h1>Gravity Simulation</h1>
-      </div>
-
-      <div class="row">
-
-        <!-- The Main WebGL rendering window -->
-        <div class="col-md-9">
-          <div class="relative">
-            <canvas id="glCanvas" class="absolute" hidden></canvas>
-            <canvas id="rasterizerCanvas" class="absolute"></canvas>
-          </div>
-          <hr style="margin:10px 0">
-          <button class="btn btn-default" id="saveImage" type="button">Open Scene as Image</button>
-        </div>
-
-        <!-- Column for the GUI controls -->
-        <div class="col-md-3">
-
-          <!-- Currently active shape type for new shapes -->
-          <div class="form-group">
-            <label for="shapeType">New Shape Type</label>
-            <select class="form-control" size="2" id="shapeType">
-              <option value="circle" selected>Circle</option>
-              <option value="line">Line</option>
-              <option value="triangle">Triangle</option>
-            </select>
-          </div>
-
-          <!-- The list of shapes in the scene -->
-          <div class="form-group">
-            <label for="shapeSelect">Shapes in Scene</label>
-            <select class="form-control" size="8" id="shapeSelect">
-            </select>
-          </div>
-
-
-          <!-- Controls for the current/new shape's properties -->
-          <label>Active/New Shape Properties</label>
-          <div class="form-group rounded-border">
-            <fieldset id="propertiesSet">
-              <label class="control-label" for="redColor">RGB Color:</label><br>
-              <div class="form-inline">
-                <input type="number" class="form-control shape-prop-control" style="width:30%;" value="255" min="0" max="255" name="redColor" id="redColor">
-                <input type="number" class="form-control shape-prop-control" style="width:30%;" value="255" min="0" max="255" name="greenColor" id="greenColor">
-                <input type="number" class="form-control shape-prop-control" style="width:30%;" value="255" min="0" max="255" name="blueColor" id="blueColor">
-              </div>
-
-              <hr style="margin:10px 0">
-
-              <div class="form-inline">
-                <label class="control-label" for="radius">Radius: </label>
-                <input type="number" class="form-control shape-prop-control" value="10.0" min="0" max="999.9" name="radius" id="radius">
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <div class="checkbox-inline">
-                  <label><input type="checkbox" name="filled" id="filled" checked>Filled</label>
-                </div>
-              </div>
-            </fieldset>
-          </div>
-          
-          <label>Active Shape Transformation</label>
+ <!DOCTYPE html>
+ <html lang="en">
+   <head>
+     <meta charset="utf-8">
+     <title>Gravity Simulation</title>
+ 
+     <!-- Bootstrap core CSS -->
+     <link href="../common/css/bootstrap.min.css" rel="stylesheet">
+ 
+     <!-- Extra custom CSS rules -->
+     <style>
+     .rounded-border {
+       border: 1px solid lightgray;
+       border-radius: 4px;
+       padding: 6px 6px 6px 6px
+     }
+ 
+     .relative {
+       width:100%; height:810px;
+       position: relative;
+     }
+ 
+     .absolute {
+       width:100%; height:810px;
+       position: absolute;
+     }
+     </style>
+ 
+   </head>
+   <body style="padding-top:15px; padding-bottom:15px;">
+     <div class="container">
+ 
+       <div class="page-header">
+           <h1>Gravity Simulation</h1>
+       </div>
+ 
+       <div class="row">
+ 
+         <!-- The Main WebGL rendering window -->
+         <div class="col-md-9">
+           <div class="relative">
+             <canvas id="glCanvas" class="absolute" hidden></canvas>
+             <canvas id="rasterizerCanvas" class="absolute"></canvas>
+           </div>
+           <hr style="margin:10px 0">
+           <button class="btn btn-default" id="saveImage" type="button">Open Scene as Image</button>
+         </div>
+ 
+         <!-- Column for the GUI controls -->
+         <div class="col-md-3">
+ 
+           <!-- Currently active shape type for new shapes -->
+           <div class="form-group">
+             <label for="shapeType">New Shape Type</label>
+             <select class="form-control" size="2" id="shapeType">
+               <option value="circle" selected>Circle</option>
+               <option value="line">Line</option>
+               <option value="triangle">Triangle</option>
+             </select>
+           </div>
+ 
+           <!-- The list of shapes in the scene -->
+           <div class="form-group">
+             <label for="shapeSelect">Shapes in Scene</label>
+             <select class="form-control" size="8" id="shapeSelect">
+              </select>
+            </div>
+  
+ -<!--           <!-- Rendering mode options -->
+ -          <label>Rendering Options</label>
+ -          <div class="form-group rounded-border">
+ -            <div class="form-inline">
+ -              <label for="shapeSelect">Drawing Mode:</label>
+ -              <select class="form-control" id="renderingMode">
+ -                <option value="Rasterizer">Rasterizer</option>
+ -                <option value="OpenGL">OpenGL</option>
+ -              </select>
+ -            </div>
+ -            <hr style="margin:10px 0">
+ -            <div class="checkbox-inline form-inline">
+ -              <label><input type="checkbox" name="slowMoCheckbox" id="slowMoCheckbox">Slow-mo:
+ -              </label>
+ -              <div class="input-group">
+ -                <input type="number" class="form-control" value="3" min="1" max="15" name="slowMoSpeed" id="slowMoSpeed" disabled>
+ -                <span class="input-group-addon">px</span>
+ -              </div>
+ -            </div>
+ -          </div>
+ - -->
+ +
+            <!-- Controls for the current/new shape's properties -->
+            <label>Active/New Shape Properties</label>
+            <div class="form-group rounded-border">
+             <fieldset id="propertiesSet">
+               <label class="control-label" for="redColor">RGB Color:</label><br>
+               <div class="form-inline">
+                 <input type="number" class="form-control shape-prop-control" style="width:30%;" value="255" min="0" max="255" name="redColor" id="redColor">
+                 <input type="number" class="form-control shape-prop-control" style="width:30%;" value="255" min="0" max="255" name="greenColor" id="greenColor">
+                 <input type="number" class="form-control shape-prop-control" style="width:30%;" value="255" min="0" max="255" name="blueColor" id="blueColor">
+               </div>
+ 
+               <hr style="margin:10px 0">
+ 
+               <div class="form-inline">
+                 <label class="control-label" for="radius">Radius: </label>
+                 <input type="number" class="form-control shape-prop-control" value="10.0" min="0" max="999.9" name="radius" id="radius">
+                 &nbsp;&nbsp;&nbsp;&nbsp;
+                 <div class="checkbox-inline">
+                   <label><input type="checkbox" name="filled" id="filled" checked>Filled</label>
+                 </div>
+               </div>
+              </fieldset>
+            </div>
+  
+ -<!--           <!-- Controls for the current shape's transformation -->
+ -          <label>Active Shape Transformation</label>
  -          <div class="form-group rounded-border">
  -            <fieldset id="transformSet" disabled>
  -              <label for="xTranslate" class="control-label">Translation:</label><br>
@@ -127,46 +149,46 @@
  -      </div>
   
  -    </div>
-
-    <!-- 3rd Pary Libraries -->
-    <script src="../common/js/jquery.min.js"></script>
-    <script src="../common/js/bootstrap.min.js"></script>
-    <script src="../common/js/twgl.min.js"></script>
-
-    <!-- Vertex Shader - Just transforms point to CVV -->
-    <script id="vs" type="x-shader/x-vertex">
-    precision mediump float;
-
-    attribute vec4 position;
-    uniform mat4 projection;
-
-    void main() {
-      gl_Position = projection*position;
-    }
-    </script>
-
-    <!-- Fragment Shader - Assign passed in color to this pixel -->
-    <script id="fs" type="x-shader/x-fragment">
-    precision mediump float;
-
-    uniform vec3 color;
-
-    void main() {
-      gl_FragColor.rgb = color;
-      gl_FragColor.a = 1.0;
-    }
-    </script>
-
-    <!-- Site specific JS code -->
-    <script src="matrixMath.js"></script> <!-- All the matrix & vector math functions -->
-
-    <script src="Shape.js"></script> <!-- The generic shape object -->
-    <script src="Line.js"></script> <!-- The Line object -->
-    <script src="Circle.js"></script> <!-- The Circle object -->
-    <script src="Triangle.js"></script> <!-- The Triangle object -->
-
-    <script src="interface.js"></script> <!-- Code for event callbacks related to the GUI -->
-    <script src="shapely.js"></script> <!-- Code to initialize the page and WebGL -->
-
-  </body>
-</html>
+ - -->
+      <!-- 3rd Pary Libraries -->
+      <script src="../common/js/jquery.min.js"></script>
+      <script src="../common/js/bootstrap.min.js"></script>
+     <script src="../common/js/twgl.min.js"></script>
+ 
+     <!-- Vertex Shader - Just transforms point to CVV -->
+     <script id="vs" type="x-shader/x-vertex">
+     precision mediump float;
+ 
+     attribute vec4 position;
+     uniform mat4 projection;
+ 
+     void main() {
+       gl_Position = projection*position;
+     }
+     </script>
+ 
+     <!-- Fragment Shader - Assign passed in color to this pixel -->
+     <script id="fs" type="x-shader/x-fragment">
+     precision mediump float;
+ 
+     uniform vec3 color;
+ 
+     void main() {
+       gl_FragColor.rgb = color;
+       gl_FragColor.a = 1.0;
+     }
+     </script>
+ 
+     <!-- Site specific JS code -->
+     <script src="matrixMath.js"></script> <!-- All the matrix & vector math functions -->
+ 
+     <script src="Shape.js"></script> <!-- The generic shape object -->
+     <script src="Line.js"></script> <!-- The Line object -->
+     <script src="Circle.js"></script> <!-- The Circle object -->
+     <script src="Triangle.js"></script> <!-- The Triangle object -->
+ 
+     <script src="interface.js"></script> <!-- Code for event callbacks related to the GUI -->
+     <script src="shapely.js"></script> <!-- Code to initialize the page and WebGL -->
+ 
+   </body>
+ </html>

@@ -66,90 +66,90 @@
               </select>
             </div>
   
- -<!--           <!-- Rendering mode options -->
- -          <label>Rendering Options</label>
- -          <div class="form-group rounded-border">
- -            <div class="form-inline">
- -              <label for="shapeSelect">Drawing Mode:</label>
- -              <select class="form-control" id="renderingMode">
- -                <option value="Rasterizer">Rasterizer</option>
- -                <option value="OpenGL">OpenGL</option>
- -              </select>
- -            </div>
- -            <hr style="margin:10px 0">
- -            <div class="checkbox-inline form-inline">
- -              <label><input type="checkbox" name="slowMoCheckbox" id="slowMoCheckbox">Slow-mo:
- -              </label>
- -              <div class="input-group">
- -                <input type="number" class="form-control" value="3" min="1" max="15" name="slowMoSpeed" id="slowMoSpeed" disabled>
- -                <span class="input-group-addon">px</span>
- -              </div>
- -            </div>
- -          </div>
- - -->
- +
+           <!-- Rendering mode options -->
+<!--            <label>Rendering Options</label> -->
+<!--            <div class="form-group rounded-border"> -->
+<!--              <div class="form-inline"> -->
+<!--                <label for="shapeSelect">Drawing Mode:</label> -->
+<!--                <select class="form-control" id="renderingMode"> -->
+<!--                  <option value="Rasterizer">Rasterizer</option> -->
+<!--                  <option value="OpenGL">OpenGL</option> -->
+<!--                </select> -->
+<!--              </div> -->
+<!--              <hr style="margin:10px 0"> -->
+<!--              <div class="checkbox-inline form-inline"> -->
+<!--                <label><input type="checkbox" name="slowMoCheckbox" id="slowMoCheckbox">Slow-mo: -->
+<!--                </label> -->
+<!--                <div class="input-group"> -->
+<!--                  <input type="number" class="form-control" value="3" min="1" max="15" name="slowMoSpeed" id="slowMoSpeed" disabled> -->
+<!--                  <span class="input-group-addon">px</span> -->
+<!--                </div> -->
+<!--              </div> -->
+<!--            </div> -->
+ 
+ 
             <!-- Controls for the current/new shape's properties -->
-            <label>Active/New Shape Properties</label>
-            <div class="form-group rounded-border">
-             <fieldset id="propertiesSet">
-               <label class="control-label" for="redColor">RGB Color:</label><br>
+<!--             <label>Active/New Shape Properties</label> -->
+<!--             <div class="form-group rounded-border"> -->
+<!--              <fieldset id="propertiesSet"> -->
+<!--                <label class="control-label" for="redColor">RGB Color:</label><br> -->
+<!--                <div class="form-inline"> -->
+<!--                  <input type="number" class="form-control shape-prop-control" style="width:30%;" value="255" min="0" max="255" name="redColor" id="redColor"> -->
+<!--                  <input type="number" class="form-control shape-prop-control" style="width:30%;" value="255" min="0" max="255" name="greenColor" id="greenColor"> -->
+<!--                  <input type="number" class="form-control shape-prop-control" style="width:30%;" value="255" min="0" max="255" name="blueColor" id="blueColor"> -->
+<!--                </div> -->
+<!--   -->
+<!--                <hr style="margin:10px 0"> -->
+<!--   -->
+<!--                <div class="form-inline"> -->
+<!--                  <label class="control-label" for="radius">Radius: </label> -->
+<!--                  <input type="number" class="form-control shape-prop-control" value="10.0" min="0" max="999.9" name="radius" id="radius"> -->
+<!--                  &nbsp;&nbsp;&nbsp;&nbsp; -->
+<!--                  <div class="checkbox-inline"> -->
+<!--                    <label><input type="checkbox" name="filled" id="filled" checked>Filled</label> -->
+<!--                  </div> -->
+<!--                </div> -->
+<!--               </fieldset> -->
+<!--             </div> -->
+  
+            <!-- Controls for the current shape's transformation -->
+           <label>Active Shape Transformation</label>
+           <div class="form-group rounded-border">
+             <fieldset id="transformSet" disabled>
+               <label for="xTranslate" class="control-label">Translation:</label><br>
                <div class="form-inline">
-                 <input type="number" class="form-control shape-prop-control" style="width:30%;" value="255" min="0" max="255" name="redColor" id="redColor">
-                 <input type="number" class="form-control shape-prop-control" style="width:30%;" value="255" min="0" max="255" name="greenColor" id="greenColor">
-                 <input type="number" class="form-control shape-prop-control" style="width:30%;" value="255" min="0" max="255" name="blueColor" id="blueColor">
+                 <input type="number" class="form-control shape-trans-control" value="0.0" step="1.0" min="-9999" max="9999" name="xTranslate" id="xTranslate">
+                 <input type="number" class="form-control shape-trans-control" value="0.0" step="1.0" min="-9999" max="9999" name="yTranslate" id="yTranslate">
                </div>
  
                <hr style="margin:10px 0">
  
+               <label for="xScale" class="control-label">Scale:</label>
                <div class="form-inline">
-                 <label class="control-label" for="radius">Radius: </label>
-                 <input type="number" class="form-control shape-prop-control" value="10.0" min="0" max="999.9" name="radius" id="radius">
+                 <input type="number" class="form-control shape-trans-control" value="1.0" step="0.1" min="-9999" max="9999" name="xScale" id="xScale">
+                 <input type="number" class="form-control shape-trans-control" value="1.0" step="0.1" min="-9999" max="9999" name="yScale" id="yScale">
+               </div>
+ 
+               <hr style="margin:10px 0">
+ 
+               <label for="rotAngle" class="control-label">Rotation:</label><br>
+               <div class="form-inline">
+                 <input type="number" class="form-control shape-trans-control" value="0.0" min="-180" max="180" name="rotAngle" id="rotAngle">
                  &nbsp;&nbsp;&nbsp;&nbsp;
                  <div class="checkbox-inline">
-                   <label><input type="checkbox" name="filled" id="filled" checked>Filled</label>
+                   <label><input type="checkbox" name="pivotCentroid" id="pivotCentroid" checked>Centered
+                   </label>
                  </div>
                </div>
-              </fieldset>
-            </div>
-  
- -<!--           <!-- Controls for the current shape's transformation -->
- -          <label>Active Shape Transformation</label>
- -          <div class="form-group rounded-border">
- -            <fieldset id="transformSet" disabled>
- -              <label for="xTranslate" class="control-label">Translation:</label><br>
- -              <div class="form-inline">
- -                <input type="number" class="form-control shape-trans-control" value="0.0" step="1.0" min="-9999" max="9999" name="xTranslate" id="xTranslate">
- -                <input type="number" class="form-control shape-trans-control" value="0.0" step="1.0" min="-9999" max="9999" name="yTranslate" id="yTranslate">
- -              </div>
- -
- -              <hr style="margin:10px 0">
- -
- -              <label for="xScale" class="control-label">Scale:</label>
- -              <div class="form-inline">
- -                <input type="number" class="form-control shape-trans-control" value="1.0" step="0.1" min="-9999" max="9999" name="xScale" id="xScale">
- -                <input type="number" class="form-control shape-trans-control" value="1.0" step="0.1" min="-9999" max="9999" name="yScale" id="yScale">
- -              </div>
- -
- -              <hr style="margin:10px 0">
- -
- -              <label for="rotAngle" class="control-label">Rotation:</label><br>
- -              <div class="form-inline">
- -                <input type="number" class="form-control shape-trans-control" value="0.0" min="-180" max="180" name="rotAngle" id="rotAngle">
- -                &nbsp;&nbsp;&nbsp;&nbsp;
- -                <div class="checkbox-inline">
- -                  <label><input type="checkbox" name="pivotCentroid" id="pivotCentroid" checked>Centered
- -                  </label>
- -                </div>
- -              </div>
- -
- -            </fieldset>
- -          </div>
- -        </div>
- -
- -      </div>
-  
- -    </div>
- - -->
+ 
+             </fieldset>
+           </div>
+         </div>
+ 
+       </div>
+ 
+     </div>
+ 
       <!-- 3rd Pary Libraries -->
       <script src="../common/js/jquery.min.js"></script>
       <script src="../common/js/bootstrap.min.js"></script>

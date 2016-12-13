@@ -51,18 +51,17 @@
  
            <!-- Currently active shape type for new shapes -->
            <div class="form-group">
-             <label for="shapeType">New Shape Type</label>
-             <select class="form-control" size="2" id="shapeType">
-               <option value="circle" selected>Circle</option>
-               <option value="line">Line</option>
-               <option value="triangle">Triangle</option>
+             <label for="object">New Object</label>
+             <select class="form-control" size="2" id="object">
+               <option value="ball" selected>Ball</option>
+              <option value="gravWell">Gravity Well</option>
              </select>
            </div>
  
            <!-- The list of shapes in the scene -->
            <div class="form-group">
-             <label for="shapeSelect">Shapes in Scene</label>
-             <select class="form-control" size="8" id="shapeSelect">
+             <label for="selectObject">Objects in Scene</label>
+             <select class="form-control" size="8" id="selectObject">
               </select>
             </div>
   
@@ -80,20 +79,15 @@
  
                <label for="xScale" class="control-label">Scale:</label>
                <div class="form-inline">
-                 <input type="number" class="form-control shape-trans-control" value="1.0" step="0.1" min="-9999" max="9999" name="xScale" id="xScale">
-                 <input type="number" class="form-control shape-trans-control" value="1.0" step="0.1" min="-9999" max="9999" name="yScale" id="yScale">
+                 <input type="number" class="form-control shape-trans-control" value="1.0" step="1.0" min="0" max="9999" name="xScale" id="xScale">
+                 <input type="number" class="form-control shape-trans-control" value="1.0" step="1.0" min="0" max="9999" name="yScale" id="yScale">
                </div>
  
                <hr style="margin:10px 0">
  
-               <label for="rotAngle" class="control-label">Rotation:</label><br>
+               <label for="gravForce" class="control-label">Gravititional Force:</label><br>
                <div class="form-inline">
-                 <input type="number" class="form-control shape-trans-control" value="0.0" min="-180" max="180" name="rotAngle" id="rotAngle">
-                 &nbsp;&nbsp;&nbsp;&nbsp;
-                 <div class="checkbox-inline">
-                   <label><input type="checkbox" name="pivotCentroid" id="pivotCentroid" checked>Centered
-                   </label>
-                 </div>
+                 <input type="number" class="form-control shape-trans-control" value="0.0" min="-180" max="180" name="gravForce" id="gravForce">
                </div>
  
              </fieldset>
@@ -136,13 +130,11 @@
      <!-- Site specific JS code -->
      <script src="matrixMath.js"></script> <!-- All the matrix & vector math functions -->
  
-     <script src="Shape.js"></script> <!-- The generic shape object -->
-     <script src="Line.js"></script> <!-- The Line object -->
-     <script src="Circle.js"></script> <!-- The Circle object -->
-     <script src="Triangle.js"></script> <!-- The Triangle object -->
- 
+     <script src="Ball.js"></script> <!-- Ball object -->
+     <script src="Gravity Well.js"></script> <!-- Gravity Well object -->
+      
      <script src="interface.js"></script> <!-- Code for event callbacks related to the GUI -->
-     <script src="shapely.js"></script> <!-- Code to initialize the page and WebGL -->
+     <script src="gravsim.js"></script> <!-- Code to initialize the page and WebGL -->
  
    </body>
  </html>

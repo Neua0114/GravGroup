@@ -1,8 +1,18 @@
-var sprite = function(){
+var sprite = function(xPos,yPos,velocityX,velocityY){
 
+  if(typeof xPos === 'undefined') {xPos = 0};
+  if(typeof yPos === 'undefined') {yPos = 0};
+
+   if(typeof velocityX === 'undefined') {velocityX = 0};
+  if(typeof velocityY === 'undefined') {velocityY = 0};
+
+  this.objectType = "nadda";
+
+  this.gravitationalForce = 0;
+  this.hasGravity = false;
 	// name of sprite for debuging
 	this.name = "";
-
+  this.mass = 1;
 	// x and y location of sprite on the image file
 	this.sourceX = 2;
 	this.sourceY = 2;
@@ -18,10 +28,6 @@ var sprite = function(){
 	//actual display width and heigth of image
 	this.width = 64;
 	this.height = 64;
-
-	// current location of the image on the canvas
-	this.x = 0;
-	this.y = 0;
 
 	// to display the sprite or not to
 	this.visible = true;
@@ -50,6 +56,45 @@ var sprite = function(){
 
 	// transparency for spite images
 	this.alpha = 1;
+
+    // current location of the image on the canvas
+  this.x = xPos;
+  this.y = yPos;
+
+  this.velocity = { x: velocityX, y: velocityY};
+  this.accleration = { x:0, y:0};
+
+  // enemy Global Variables
+  this.id = 0;
+
+  this.desiredDistance = 80;
+  this.maxSpeed = 8;
+
+  this.flock = true;
+  this.difference = {
+
+    x: 0,
+    y: 0
+
+  };
+
+  //console.log(this.currentColor);
+
+  this.getColor = function(){
+     return this.currentColor;
+  }
+
+  this.update = function(){
+
+      this.velocity.x += this.accleration.x;
+      this.velocity.y += this.accleration.y;
+      this.x += this.velocity.x;
+      this.y += this.velocity.y;
+      this.accleration.x *= 0;
+      this.accleration.y *= 0;
+
+
+  }
 
 
 	// updates animation to the correct framing timing is not incorperated yet
@@ -176,10 +221,12 @@ var sprite = function(){
 }
 
  this.distance = function(c2){
-    var vx = this.centerX() - c2.centerX();
+    var vx = c2.centerX() - this.centerX();
     var vy = this.centerY() - c2.centerY();
 
     var magnitude = Math.sqrt((vx * vx) + (vy * vy));
+
+    //console.log(magnitude);
 
 	 	return magnitude;
  }
@@ -252,4 +299,6 @@ var sprite = function(){
 
     }
 	}
-		}; // END spriteObject
+
+
+}; // END spriteObject
